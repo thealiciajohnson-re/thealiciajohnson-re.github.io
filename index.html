@@ -157,10 +157,14 @@
     display:flex;align-items:center;justify-content:center;font-weight:700;transition:.2s}
   .socials a:hover{background:var(--accent)}
   form label{display:block;font-weight:600;color:var(--charcoal);font-size:.9rem;margin:14px 0 6px}
-  form input,form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
-    font-family:inherit;font-size:1rem}
+  form input,form textarea,form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
+    font-family:inherit;font-size:1rem;background:#fff;color:var(--text)}
   form textarea{min-height:110px;resize:vertical}
   @media(max-width:760px){.contact-grid{grid-template-columns:1fr;gap:34px}}
+  .tour-card{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:34px 34px 38px;box-shadow:0 18px 44px rgba(140,112,82,.10)}
+  .tour-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:600px){.tour-card{padding:26px 20px 30px}.tour-row{grid-template-columns:1fr;gap:0}}
 
   /* FOOTER */
   footer{background:#0f1c2e;color:#9fb0c0;padding:44px 0;text-align:center;font-size:.9rem}
@@ -234,6 +238,7 @@
         <a href="#buyers" id="nav-sellers">Sellers</a>
         <a href="#areas">Areas</a>
         <a href="#sold">Sold</a>
+        <a href="#tour">Book a Tour</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact" class="btn">Contact Me</a>
       </div>
@@ -250,7 +255,7 @@
       <p>Whether you're buying your first home or selling a property you've loved for decades, I'm here to make the process clear, calm, and successful.</p>
       <div class="hero-cta">
         <a href="https://excelleraterealestate.com/properties/sale" class="btn" target="_blank" rel="noopener">Browse Homes for Sale</a>
-        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+        <a href="#tour" class="btn btn-outline">Schedule a Tour</a>
       </div>
     </div>
   </div>
@@ -552,6 +557,54 @@
         <button class="faq-q">I'm not ready to buy or sell yet. Can we still talk?<span class="chev">+</span></button>
         <div class="faq-a"><p>Absolutely. Some of my best client relationships started a year or more before a move. I'm happy to answer questions, share market insights, and help you plan&mdash;no pressure, no obligation.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE A TOUR -->
+<section id="tour" class="section-soft">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Ready to See It in Person?</div>
+      <h2>Schedule a Home Tour</h2>
+      <p>Found a home you'd love to walk through? Tell me which property and when works best&mdash;and I'll confirm your private showing personally.</p>
+    </div>
+    <div class="tour-card">
+      <form onsubmit="event.preventDefault(); var b='Home tour request:\n\nProperty / address: '+this.address.value+'\nPreferred date: '+this.tourdate.value+'\nPreferred time: '+this.tourtime.value+'\n\nName: '+this.tname.value+'\nEmail: '+this.temail.value+'\nPhone: '+this.tphone.value+'\n\nNotes: '+this.tnotes.value; window.location.href='mailto:alicia@excelleraterealestate.com?subject='+encodeURIComponent('Home Tour Request — '+this.address.value)+'&body='+encodeURIComponent(b);">
+        <label for="address">Property address or MLS # you'd like to tour</label>
+        <input id="address" name="address" type="text" required placeholder="e.g. 123 Main St, Santa Rosa">
+        <div class="tour-row">
+          <div>
+            <label for="tourdate">Preferred date</label>
+            <input id="tourdate" name="tourdate" type="date">
+          </div>
+          <div>
+            <label for="tourtime">Preferred time</label>
+            <select id="tourtime" name="tourtime">
+              <option>Morning (9am&ndash;12pm)</option>
+              <option>Afternoon (12&ndash;4pm)</option>
+              <option>Evening (4&ndash;7pm)</option>
+              <option>Weekend</option>
+              <option>I'm flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="tour-row">
+          <div>
+            <label for="tname">Name</label>
+            <input id="tname" name="tname" type="text" required placeholder="Your name">
+          </div>
+          <div>
+            <label for="tphone">Phone</label>
+            <input id="tphone" name="tphone" type="tel" placeholder="(707) 000-0000">
+          </div>
+        </div>
+        <label for="temail">Email</label>
+        <input id="temail" name="temail" type="email" required placeholder="you@email.com">
+        <label for="tnotes">Anything else? (optional)</label>
+        <textarea id="tnotes" name="tnotes" placeholder="In-person or virtual, must-see features, timing details..."></textarea>
+        <button type="submit" class="btn" style="margin-top:18px;width:100%">Request My Tour</button>
+      </form>
     </div>
   </div>
 </section>
