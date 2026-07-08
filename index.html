@@ -515,12 +515,16 @@
         <p>Curious about your home's value in today's market? Get a free, no-obligation comparative market analysis prepared personally by me&mdash;not an automated estimate.</p>
       </div>
       <div class="vform">
-        <!-- Opens the visitor's email app pre-filled to you. To switch to true
-             form submissions later, set action="https://formspree.io/f/yourID" method="POST". -->
-        <form onsubmit="event.preventDefault(); window.location.href='mailto:alicia@excelleraterealestate.com?subject='+encodeURIComponent('Home Valuation Request — '+this.addr.value)+'&body='+encodeURIComponent('Property address: '+this.addr.value+'\nName: '+this.vname.value+'\nEmail/Phone: '+this.vcontact.value);">
-          <input id="addr" name="addr" type="text" required placeholder="Property address">
-          <input id="vname" name="vname" type="text" required placeholder="Your name">
-          <input id="vcontact" name="vcontact" type="text" required placeholder="Email or phone">
+        <!-- Real form delivery via FormSubmit (free, no account). -->
+        <form action="https://formsubmit.co/alicia@excelleraterealestate.com" method="POST">
+          <input type="hidden" name="_subject" value="New home valuation request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://thealiciajohnsonhomes.com/thanks.html">
+          <input id="addr" name="Property address" type="text" required placeholder="Property address">
+          <input id="vname" name="Name" type="text" required placeholder="Your name">
+          <input id="vemail" name="email" type="email" required placeholder="Email">
+          <input id="vphone" name="Phone" type="tel" required placeholder="Phone number">
           <button type="submit" class="btn">Get My Free Valuation</button>
         </form>
       </div>
@@ -570,17 +574,21 @@
       <p>Found a home you'd love to walk through? Tell me which property and when works best&mdash;and I'll confirm your private showing personally.</p>
     </div>
     <div class="tour-card">
-      <form onsubmit="event.preventDefault(); var b='Home tour request:\n\nProperty / address: '+this.address.value+'\nPreferred date: '+this.tourdate.value+'\nPreferred time: '+this.tourtime.value+'\n\nName: '+this.tname.value+'\nEmail: '+this.temail.value+'\nPhone: '+this.tphone.value+'\n\nNotes: '+this.tnotes.value; window.location.href='mailto:alicia@excelleraterealestate.com?subject='+encodeURIComponent('Home Tour Request — '+this.address.value)+'&body='+encodeURIComponent(b);">
+      <form action="https://formsubmit.co/alicia@excelleraterealestate.com" method="POST">
+        <input type="hidden" name="_subject" value="New home tour request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://thealiciajohnsonhomes.com/thanks.html">
         <label for="address">Property address or MLS # you'd like to tour</label>
-        <input id="address" name="address" type="text" required placeholder="e.g. 123 Main St, Santa Rosa">
+        <input id="address" name="Property or MLS number" type="text" required placeholder="e.g. 123 Main St, Santa Rosa">
         <div class="tour-row">
           <div>
             <label for="tourdate">Preferred date</label>
-            <input id="tourdate" name="tourdate" type="date">
+            <input id="tourdate" name="Preferred date" type="date">
           </div>
           <div>
             <label for="tourtime">Preferred time</label>
-            <select id="tourtime" name="tourtime">
+            <select id="tourtime" name="Preferred time">
               <option>Morning (9am&ndash;12pm)</option>
               <option>Afternoon (12&ndash;4pm)</option>
               <option>Evening (4&ndash;7pm)</option>
@@ -592,17 +600,17 @@
         <div class="tour-row">
           <div>
             <label for="tname">Name</label>
-            <input id="tname" name="tname" type="text" required placeholder="Your name">
+            <input id="tname" name="Name" type="text" required placeholder="Your name">
           </div>
           <div>
             <label for="tphone">Phone</label>
-            <input id="tphone" name="tphone" type="tel" placeholder="(707) 000-0000">
+            <input id="tphone" name="Phone" type="tel" placeholder="(707) 000-0000">
           </div>
         </div>
         <label for="temail">Email</label>
-        <input id="temail" name="temail" type="email" required placeholder="you@email.com">
+        <input id="temail" name="email" type="email" required placeholder="you@email.com">
         <label for="tnotes">Anything else? (optional)</label>
-        <textarea id="tnotes" name="tnotes" placeholder="In-person or virtual, must-see features, timing details..."></textarea>
+        <textarea id="tnotes" name="Notes" placeholder="In-person or virtual, must-see features, timing details..."></textarea>
         <button type="submit" class="btn" style="margin-top:18px;width:100%">Request My Tour</button>
       </form>
     </div>
@@ -643,17 +651,21 @@
       </div>
 
       <div>
-        <!-- Opens the visitor's email app pre-filled to you. To switch to true
-             form submissions later, set action="https://formspree.io/f/yourID" method="POST". -->
-        <form onsubmit="event.preventDefault(); window.location.href='mailto:alicia@excelleraterealestate.com?subject='+encodeURIComponent('Website Inquiry from '+this.name.value)+'&body='+encodeURIComponent(this.message.value+'\n\nName: '+this.name.value+'\nEmail: '+this.email.value+'\nPhone: '+this.phone.value);">
+        <!-- Real form delivery via FormSubmit (free, no account). Emails submissions to Alicia.
+             First submission triggers a one-time activation email she must confirm. -->
+        <form action="https://formsubmit.co/alicia@excelleraterealestate.com" method="POST">
+          <input type="hidden" name="_subject" value="New inquiry from your website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://thealiciajohnsonhomes.com/thanks.html">
           <label for="name">Name</label>
-          <input id="name" name="name" type="text" required placeholder="Your name">
+          <input id="name" name="Name" type="text" required placeholder="Your name">
           <label for="email">Email</label>
           <input id="email" name="email" type="email" required placeholder="you@email.com">
           <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" placeholder="(optional)">
+          <input id="phone" name="Phone" type="tel" required placeholder="(707) 000-0000">
           <label for="message">How can I help?</label>
-          <textarea id="message" name="message" placeholder="Tell me a little about what you're looking for..."></textarea>
+          <textarea id="message" name="Message" placeholder="Tell me a little about what you're looking for..."></textarea>
           <button type="submit" class="btn" style="margin-top:18px;width:100%">Send Message</button>
         </form>
       </div>
