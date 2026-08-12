@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>What's Your North Bay Home Worth? — Free Home Value Quiz | Alicia Johnson</title>
+<meta property="og:title" content="What Could Your North Bay Home Really Sell For?">
+<meta property="og:description" content="Napa, Marin, Sonoma & Mendocino homeowners — answer 8 quick questions and I'll text you an honest value range from real comparable sales, not a robo-estimate.">
+<style>
+  :root{--green:#1b4f3a;--green2:#227a52;--ink:#1a2b22;--mute:#6b7d73;--gold:#b08d4f;--bg:#f4f6f3;--card:#ffffff;--line:#e6ebe6;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+  .wrap{max-width:560px;margin:0 auto;padding:18px 16px 60px}
+  .topbar{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 0 16px;color:var(--green);font-weight:700;font-size:15px}
+  .banner{background:#eaf3ee;color:var(--green);border:1px solid #d3e6db;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.03em;text-align:center;padding:7px 14px;margin:0 auto 18px;display:inline-block}
+  .center{text-align:center}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 30px rgba(20,40,30,.06);padding:26px 22px}
+  h1{font-size:30px;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+  .sub{color:var(--mute);font-size:15.5px;margin-bottom:22px}
+  .eyebrow{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+  .btn{display:block;width:100%;background:var(--green);color:#fff;border:none;border-radius:12px;padding:16px;font-size:17px;font-weight:700;cursor:pointer;transition:.15s;text-align:center}
+  .btn:hover{background:#153f2e}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn-ghost{background:transparent;color:var(--mute);border:none;font-size:14px;padding:12px;cursor:pointer;width:100%}
+  .trust{display:flex;justify-content:center;gap:18px;margin-top:16px;color:var(--mute);font-size:12.5px;flex-wrap:wrap}
+  .agentbar{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:18px}
+  .agentbar img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:center top}
+  .agentbar .n{font-weight:700;font-size:14px}
+  .agentbar .r{font-size:12px;color:var(--mute)}
+  /* quiz */
+  .progress{height:7px;background:#e9efe9;border-radius:999px;overflow:hidden;margin-bottom:8px}
+  .progress > i{display:block;height:100%;background:var(--green2);border-radius:999px;transition:width .3s ease;width:12.5%}
+  .qcount{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:12px;font-weight:600;letter-spacing:.03em;margin-bottom:16px}
+  .q{font-size:23px;font-weight:700;line-height:1.25;margin-bottom:6px}
+  .qhelp{color:var(--mute);font-size:14px;margin-bottom:18px}
+  .opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:13px;padding:14px 15px;margin-bottom:10px;cursor:pointer;transition:.12s;background:#fff}
+  .opt:hover{border-color:#bcd6c6}
+  .opt.sel{border-color:var(--green2);background:#f0f8f3}
+  .opt .lt{width:26px;height:26px;border-radius:50%;background:#eef3ef;color:var(--green);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .opt.sel .lt{background:var(--green2);color:#fff}
+  .opt .tx{font-size:15.5px;font-weight:500}
+  .chip{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:999px;padding:11px 15px;margin:0 8px 10px 0;cursor:pointer;font-size:14.5px;font-weight:500;transition:.12s;background:#fff}
+  .chip.sel{border-color:var(--green2);background:#f0f8f3;color:var(--green)}
+  .chip.sel:before{content:"✓ "}
+  .rankrow{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:13px;padding:12px 14px;margin-bottom:10px;background:#fff}
+  .rankrow .num{width:26px;height:26px;border-radius:50%;background:var(--green2);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .rankrow .rt{flex:1;font-size:15px;font-weight:500}
+  .rankrow .ar{display:flex;flex-direction:column;gap:2px}
+  .rankrow .ar button{width:30px;height:22px;border:1px solid var(--line);background:#f7faf8;border-radius:6px;cursor:pointer;font-size:12px;line-height:1;color:var(--green)}
+  .rankrow .ar button:disabled{opacity:.3;cursor:default}
+  .sliderwrap{text-align:center;padding:8px 0 4px}
+  .slidernum{font-size:38px;font-weight:800;color:var(--green);letter-spacing:-.02em}
+  .sliderlbl{color:var(--mute);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+  input[type=range]{width:100%;accent-color:var(--green2);height:32px}
+  .rangeends{display:flex;justify-content:space-between;color:var(--mute);font-size:12px;margin-top:2px}
+  textarea,input[type=text],input[type=tel],input[type=email]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:14px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;margin-bottom:12px}
+  textarea{min-height:110px;resize:vertical;line-height:1.5}
+  input:focus,textarea:focus{outline:none;border-color:var(--green2)}
+  .flabel{font-size:13px;font-weight:600;color:var(--mute);margin-bottom:5px;display:block}
+  .navrow{display:flex;gap:10px;margin-top:18px}
+  .navrow .back{flex:0 0 auto;width:52px;background:#eef3ef;color:var(--green);border:none;border-radius:12px;font-size:20px;cursor:pointer}
+  .navrow .next{flex:1}
+  .hidden{display:none}
+  /* thank you */
+  .tycard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 16px;margin-bottom:12px}
+  .tycard .h{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;margin-bottom:6px}
+  .dot{width:11px;height:11px;border-radius:50%;background:var(--green2);flex-shrink:0}
+  .profile .row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .profile .f{flex:1;min-width:130px}
+  .profile .k{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+  .profile .v{font-size:15px;font-weight:600}
+  .worrytag{display:inline-block;background:#f0f8f3;color:var(--green);border:1px solid #cfe6da;border-radius:8px;padding:3px 9px;font-size:12.5px;margin:2px 6px 2px 0}
+  .quote{font-style:italic;color:#333;background:#f7faf8;border-left:3px solid var(--green2);padding:8px 12px;border-radius:0 8px 8px 0;font-size:14.5px}
+  .footer{text-align:center;color:var(--mute);font-size:11.5px;margin-top:22px;line-height:1.6}
+  .footer a{color:var(--green)}
+  .err{color:#c0392b;font-size:13px;margin-top:4px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ OPT-IN ============ -->
+  <div id="optin">
+    <div class="topbar">🏡 Alicia Johnson · Excellerate Real Estate</div>
+    <div class="center"><span class="banner">FREE FOR NORTH BAY HOMEOWNERS · TAKES ABOUT A MINUTE</span></div>
+    <div class="card center">
+      <div class="eyebrow">The Home Value Quiz</div>
+      <h1>What could your home really sell for?</h1>
+      <p class="sub">Napa, Marin, Sonoma &amp; Mendocino homeowners — answer 8 quick questions and I'll pull <b>real comparable sales</b> in your neighborhood and text you an honest value range, not a robo-estimate.</p>
+      <button class="btn" onclick="start()">Start the Free Quiz &rarr;</button>
+      <div class="trust"><span>✓ 100% free</span><span>✓ No obligation</span><span>✓ Your answers stay private</span></div>
+      <div class="agentbar">
+        <img src="https://thealiciajohnsonhomes.com/images/alicia.jpg" alt="Alicia Johnson" onerror="this.style.display='none'">
+        <div><div class="n">Alicia Johnson</div><div class="r">Realtor · Excellerate Real Estate · DRE #02272644</div></div>
+      </div>
+    </div>
+    <div class="footer">Serving Napa · Marin · Sonoma · Mendocino County<br><a href="https://thealiciajohnsonhomes.com/">thealiciajohnsonhomes.com</a> · 707-849-6775</div>
+  </div>
+
+  <!-- ============ QUIZ ============ -->
+  <div id="quiz" class="hidden">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="qcount"><span id="qnum">Question 1 of 8</span><span>🔒 Private &amp; secure</span></div>
+    <div class="card">
+      <div id="qbody"></div>
+      <div id="qerr" class="err hidden"></div>
+      <div class="navrow">
+        <button class="back hidden" id="backBtn" onclick="prev()">&larr;</button>
+        <button class="btn next" id="nextBtn" onclick="next()">Continue &rarr;</button>
+      </div>
+    </div>
+    <div class="footer">Alicia Johnson · Excellerate Real Estate · DRE #02272644</div>
+  </div>
+
+  <!-- ============ THANK YOU ============ -->
+  <div id="thanks" class="hidden">
+    <div class="center"><span class="banner">✅ YOUR ANSWERS ARE IN · DON'T CLOSE THIS PAGE</span></div>
+    <div class="card">
+      <div class="eyebrow">You're all set</div>
+      <h1 id="tyName">You're in the right place.</h1>
+      <p class="sub">Your answers are in and I'm on it. <b>Keep your phone close</b> — I'll text you shortly with your value range and how I got there.</p>
+
+      <div class="tycard">
+        <div class="h"><span class="dot"></span> Keep your phone close</div>
+        <div style="font-size:14px;color:#444">You'll get a <b>text or call from me shortly</b> with your real value range. Save my number below so it doesn't get lost:</div>
+        <button class="btn" style="margin-top:12px" onclick="saveContact()">↓ Save Alicia's Contact</button>
+      </div>
+
+      <div class="tycard profile">
+        <div class="h">📋 Your Sale Profile</div>
+        <div class="row">
+          <div class="f"><div class="k">Property</div><div class="v" id="pProp">—</div></div>
+          <div class="f"><div class="k">Area</div><div class="v" id="pArea">—</div></div>
+        </div>
+        <div class="row">
+          <div class="f"><div class="k">Your gut number</div><div class="v" id="pNum">—</div></div>
+          <div class="f"><div class="k">Timeline</div><div class="v" id="pTime">—</div></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="k">What matters most, in order</div><div class="v" id="pRank" style="font-size:14px;font-weight:500">—</div></div>
+        <div style="margin-bottom:10px"><div class="k">On my radar for you</div><div id="pWorry">—</div></div>
+        <div><div class="k">A home run sale, in your words</div><div class="quote" id="pDream">—</div></div>
+      </div>
+    </div>
+    <div class="footer">Talk soon! — Alicia Johnson · 707-849-6775 · DRE #02272644<br><a href="https://thealiciajohnsonhomes.com/">thealiciajohnsonhomes.com</a></div>
+  </div>
+
+</div>
+
+<script>
+var FORM_EMAIL = "alicia@excelleraterealestate.com"; // FormSubmit (already activated via the tour form)
+var CC = "alicialjohnson23@gmail.com,alicia.johnson2@followupboss.me"; // personal + Follow Up Boss inbound
+
+var A = {}; // answers
+var step = 0;
+
+var QUESTIONS = [
+  {id:"reason", type:"tap", q:"What's got you thinking about selling?", help:"Pick the closest one — there's no wrong door here.",
+   opts:["We've outgrown this place","It's more house than we need now","Relocating for work or family","Curious what the equity could do for us","Just curious what it's worth"]},
+  {id:"property", type:"tap", q:"What kind of place is it?", help:"So I can pull the right comparable sales.",
+   opts:["Single-family house","Condo or townhouse","Multi-unit / income property","Land or something else"], area:true},
+  {id:"timeline", type:"tap", q:"When would a sale ideally happen?", help:"This just helps me know how to help.",
+   opts:["As soon as possible","Within 3 months","3–6 months","6–12 months","Just exploring for now"]},
+  {id:"priorities", type:"rank", q:"Rank what matters most in your sale", help:"Drag the top one up. This becomes your game plan.",
+   opts:["The highest possible price","Certainty the deal actually closes","The least hassle and disruption"]},
+  {id:"gut", type:"slider", q:"What do you think it would sell for today?", help:"Your best guess is perfect — slide to your number.",
+   min:250000, max:3000000, stepv:10000, def:750000},
+  {id:"worries", type:"multi", q:"What worries you most about selling?", help:"Pick any that feel true.",
+   opts:["Pricing it wrong","Strangers walking through the house","It won't sell fast enough","Fees & costs eating my profit","Timing the market","Repairs before listing"]},
+  {id:"dream", type:"text", q:"Describe a home run sale, in your words", help:"One sentence is plenty. This tells me what a win looks like to you.",
+   placeholder:"e.g. Sold over asking in two weeks with no drama"},
+  {id:"contact", type:"contact", q:"Where should I text your results?", help:"Last step — your honest value range is on the way."}
+];
+
+function $(id){return document.getElementById(id);}
+function money(n){return "$"+Number(n).toLocaleString();}
+
+function start(){ $("optin").classList.add("hidden"); $("quiz").classList.remove("hidden"); step=0; render(); window.scrollTo(0,0); }
+
+function render(){
+  var Q = QUESTIONS[step];
+  $("bar").style.width = ((step+1)/QUESTIONS.length*100)+"%";
+  $("qnum").textContent = "Question "+(step+1)+" of "+QUESTIONS.length;
+  $("backBtn").classList.toggle("hidden", step===0);
+  $("qerr").classList.add("hidden");
+  $("nextBtn").textContent = (step===QUESTIONS.length-1) ? "Get My Value Range →" : "Continue →";
+  var h = '<div class="q">'+Q.q+'</div><div class="qhelp">'+Q.help+'</div>';
+
+  if(Q.type==="tap"){
+    Q.opts.forEach(function(o,i){
+      var sel = A[Q.id]===o ? " sel":"";
+      h+='<div class="opt'+sel+'" onclick="pickTap(\''+Q.id+'\','+i+')"><div class="lt">'+String.fromCharCode(65+i)+'</div><div class="tx">'+o+'</div></div>';
+    });
+    if(Q.area){ h+='<label class="flabel" style="margin-top:6px">Neighborhood or city</label><input type="text" id="areaInput" placeholder="e.g. Santa Rosa, Windsor, Bennett Valley…" value="'+(A.area||"")+'" oninput="A.area=this.value">'; }
+  }
+  else if(Q.type==="multi"){
+    Q.opts.forEach(function(o){
+      var sel = (A[Q.id]||[]).indexOf(o)>-1 ? " sel":"";
+      h+='<span class="chip'+sel+'" onclick="toggleChip(\''+Q.id+'\',\''+o.replace(/'/g,"\\'")+'\')">'+o+'</span>';
+    });
+  }
+  else if(Q.type==="rank"){
+    if(!A[Q.id]) A[Q.id] = Q.opts.slice();
+    A[Q.id].forEach(function(o,i){
+      h+='<div class="rankrow"><div class="num">'+(i+1)+'</div><div class="rt">'+o+'</div><div class="ar">'+
+         '<button onclick="moveRank(\''+Q.id+'\','+i+',-1)" '+(i===0?"disabled":"")+'>▲</button>'+
+         '<button onclick="moveRank(\''+Q.id+'\','+i+',1)" '+(i===A[Q.id].length-1?"disabled":"")+'>▼</button></div></div>';
+    });
+  }
+  else if(Q.type==="slider"){
+    var val = A[Q.id]||Q.def;
+    h+='<div class="sliderwrap"><div class="sliderlbl">Your gut number</div><div class="slidernum" id="slnum">'+money(val)+'</div>'+
+       '<input type="range" min="'+Q.min+'" max="'+Q.max+'" step="'+Q.stepv+'" value="'+val+'" oninput="A.gut=Number(this.value);document.getElementById(\'slnum\').textContent=(\'$\'+Number(this.value).toLocaleString())">'+
+       '<div class="rangeends"><span>'+money(Q.min)+'</span><span>'+money(Q.max)+'+</span></div></div>';
+    if(!A[Q.id]) A[Q.id]=Q.def;
+  }
+  else if(Q.type==="text"){
+    h+='<textarea id="dreamInput" placeholder="'+Q.placeholder+'" oninput="A.dream=this.value">'+(A.dream||"")+'</textarea>';
+  }
+  else if(Q.type==="contact"){
+    h+='<label class="flabel">First name</label><input type="text" id="cFirst" value="'+(A.first||"")+'" oninput="A.first=this.value" placeholder="Jane">'+
+       '<label class="flabel">Last name</label><input type="text" id="cLast" value="'+(A.last||"")+'" oninput="A.last=this.value" placeholder="Smith">'+
+       '<label class="flabel">Mobile number (I\'ll text your results here)</label><input type="tel" id="cPhone" value="'+(A.phone||"")+'" oninput="A.phone=this.value" placeholder="707-555-0100">'+
+       '<label class="flabel">Email</label><input type="email" id="cEmail" value="'+(A.email||"")+'" oninput="A.email=this.value" placeholder="you@email.com">';
+  }
+  $("qbody").innerHTML = h;
+  window.scrollTo(0,0);
+}
+
+function pickTap(id,i){ A[id]=QUESTIONS[step].opts[i]; render(); }
+function toggleChip(id,o){ var a=A[id]||[]; var x=a.indexOf(o); if(x>-1)a.splice(x,1); else a.push(o); A[id]=a; render(); }
+function moveRank(id,i,d){ var a=A[id]; var j=i+d; var t=a[i];a[i]=a[j];a[j]=t; render(); }
+function prev(){ if(step>0){step--;render();} }
+
+function valid(){
+  var Q=QUESTIONS[step];
+  if(Q.type==="tap"){ if(!A[Q.id]) return "Pick one to continue."; if(Q.area && !(A.area||"").trim()) return "Add your neighborhood or city."; }
+  if(Q.type==="multi"){ if(!(A[Q.id]||[]).length) return "Pick at least one."; }
+  if(Q.type==="text"){ if(!(A.dream||"").trim()) return "A quick sentence, then you're done."; }
+  if(Q.type==="contact"){
+    if(!(A.first||"").trim()||!(A.last||"").trim()) return "Please add your name.";
+    if(!(A.phone||"").replace(/\D/g,"").length) return "Add a mobile number so I can text your results.";
+    if(!/.+@.+\..+/.test(A.email||"")) return "Add a valid email.";
+  }
+  return null;
+}
+
+function next(){
+  var e=valid();
+  if(e){ $("qerr").textContent=e; $("qerr").classList.remove("hidden"); return; }
+  if(step<QUESTIONS.length-1){ step++; render(); }
+  else submit();
+}
+
+function fmtRank(a){ return (a||[]).map(function(o,i){return (i+1)+". "+o;}).join("  |  "); }
+function suggestedText(){
+  var num = A.gut?money(A.gut):"your estimate";
+  var worry = (A.worries&&A.worries[0])?A.worries[0].toLowerCase():"getting it right";
+  return "Hi "+(A.first||"there")+", it's Alicia. Just read your quiz — you guessed "+num+" for your place in "+(A.area||"your area")+". I pulled real sold prices and there's a gap worth talking about. I also saw "+worry+" is on your mind — that's exactly what I help with. Want me to send the range?";
+}
+
+function submit(){
+  $("nextBtn").disabled=true; $("nextBtn").textContent="Sending…";
+  var payload = {
+    first: A.first, last: A.last, phone: A.phone, email: A.email,
+    reason: A.reason, property: A.property, area: A.area, timeline: A.timeline,
+    priorities: fmtRank(A.priorities), gut: A.gut?money(A.gut):"",
+    worries: (A.worries||[]).join(", "), dream: A.dream, suggestedText: suggestedText()
+  };
+  // Flow the lead straight into Alicia's CRM (not Follow Up Boss).
+  fetch("https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/quiz-lead", {
+    method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload)
+  }).then(function(r){return r.json();}).then(function(){ showThanks(); })
+   .catch(function(){ showThanks(); }); // never lose the lead's confidence on a hiccup
+}
+
+function showThanks(){
+  $("quiz").classList.add("hidden"); $("thanks").classList.remove("hidden");
+  $("tyName").textContent = "You're in the right place, "+(A.first||"")+".";
+  $("pProp").textContent = A.property||"—";
+  $("pArea").textContent = A.area||"—";
+  $("pNum").textContent = A.gut?money(A.gut):"—";
+  $("pTime").textContent = A.timeline||"—";
+  $("pRank").textContent = fmtRank(A.priorities)||"—";
+  $("pWorry").innerHTML = (A.worries&&A.worries.length)? A.worries.map(function(w){return '<span class="worrytag">'+w+'</span>';}).join("") : "—";
+  $("pDream").textContent = A.dream? ("“"+A.dream+"”") : "—";
+  window.scrollTo(0,0);
+}
+
+function saveContact(){
+  var v = ["BEGIN:VCARD","VERSION:3.0","N:Johnson;Alicia;;;","FN:Alicia Johnson (Realtor)","ORG:Excellerate Real Estate","TITLE:Realtor · DRE #02272644","TEL;TYPE=CELL:707-849-6775","EMAIL:alicia@excelleraterealestate.com","URL:https://thealiciajohnsonhomes.com/","END:VCARD"].join("\n");
+  var blob = new Blob([v],{type:"text/vcard"});
+  var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="Alicia Johnson.vcf"; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+</script>
+</body>
+</html>
