@@ -518,25 +518,57 @@
     <div class="valuation reveal">
       <div>
         <h2>What's Your Home Worth?</h2>
-        <p>Curious about your home's value in today's market? Get a free, no-obligation comparative market analysis prepared personally by me&mdash;not an automated estimate.</p>
+        <p>Get an <strong>instant estimate</strong> based on real nearby sales&mdash;delivered to your inbox in seconds. Want the precise number? I'll follow up with a free, no-obligation market analysis prepared personally by me.</p>
       </div>
       <div class="vform">
-        <!-- Real form delivery via FormSubmit (free, no account). -->
-        <form action="https://formsubmit.co/alicia@excelleraterealestate.com" method="POST">
-          <input type="hidden" name="_subject" value="New home valuation request">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_cc" value="alicialjohnson23@gmail.com,alicia.johnson2@followupboss.me">
-          <input type="hidden" name="_next" value="https://thealiciajohnsonhomes.com/thanks.html">
-          <input id="addr" name="Property address" type="text" required placeholder="Property address">
-          <input id="vname" name="Name" type="text" required placeholder="Your name">
+        <form id="hvForm">
+          <input id="addr" name="address" type="text" required placeholder="Property address (e.g. 123 Main St, Santa Rosa, CA)">
+          <input id="vname" name="name" type="text" required placeholder="Your name">
           <input id="vemail" name="email" type="email" required placeholder="Email">
-          <input id="vphone" name="Phone" type="tel" required placeholder="Phone number">
-          <button type="submit" class="btn">Get My Free Valuation</button>
+          <input id="vphone" name="phone" type="tel" required placeholder="Phone number">
+          <button type="submit" class="btn" id="hvBtn">Get My Instant Estimate</button>
         </form>
+        <div id="hvResult" style="display:none;margin-top:16px"></div>
       </div>
     </div>
   </div>
+  <script>
+  (function(){
+    var f=document.getElementById('hvForm'); if(!f) return;
+    var btn=document.getElementById('hvBtn'), out=document.getElementById('hvResult');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var addr=(document.getElementById('addr').value||'').trim();
+      var name=(document.getElementById('vname').value||'').trim();
+      var email=(document.getElementById('vemail').value||'').trim();
+      var phone=(document.getElementById('vphone').value||'').trim();
+      var sp=name.split(/\s+/); var first=sp.shift()||''; var last=sp.join(' ');
+      btn.disabled=true; btn.textContent='Calculating your estimate…';
+      fetch('https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/home-value-lead',{
+        method:'POST',headers:{'content-type':'application/json'},
+        body:JSON.stringify({street:addr,first:first,last:last,email:email,phone:phone})
+      }).then(function(r){return r.json();}).then(function(d){
+        var est=d&&d.estimate, html='';
+        if(est&&est.value){
+          html='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center">'
+            +'<div style="font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:#6b7280">Estimated value</div>'
+            +'<div style="font-size:2rem;font-weight:800;color:#1b4f3a;margin:6px 0">'+est.value+'</div>'
+            +(est.low&&est.high?'<div style="color:#444">Likely range '+est.low+' &ndash; '+est.high+'</div>':'')
+            +'<div style="margin-top:12px;color:#374151">I just emailed this to you with next steps. For a precise, personalized valuation, I&rsquo;ll follow up shortly.</div></div>';
+        } else {
+          html='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center">'
+            +'<div style="font-size:1.1rem;font-weight:700;color:#1b4f3a">Thanks! Your request is in. 🏡</div>'
+            +'<div style="margin-top:8px;color:#374151">I&rsquo;m preparing your estimate and will email it to you shortly.</div></div>';
+        }
+        f.style.display='none'; out.innerHTML=html; out.style.display='block';
+      }).catch(function(){
+        f.style.display='none';
+        out.innerHTML='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center"><div style="font-weight:700;color:#1b4f3a">Thanks! Your request is in.</div><div style="margin-top:8px;color:#374151">I&rsquo;ll email your estimate shortly.</div></div>';
+        out.style.display='block';
+      });
+    });
+  })();
+  </script>
 </section>
 
 <!-- FAQ -->
