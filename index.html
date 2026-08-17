@@ -812,9 +812,14 @@
   }
 </script>
 <script>
-/* Alicia Hub visitor counter — logs an anonymous page view to the CRM */
-(function(){try{var K="ajv";var v=localStorage.getItem(K);if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem(K,v);}
-fetch("https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/site-visits",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({path:location.pathname,ref:document.referrer,vid:v}),keepalive:true}).catch(function(){});}catch(e){}})();
+/* Alicia Hub visitor + click tracker — logs anonymous page views and CTA clicks to the CRM */
+(function(){try{
+var U="https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/site-visits";
+var K="ajv";var v=localStorage.getItem(K);if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem(K,v);}
+function beacon(b){try{fetch(U,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(b),keepalive:true}).catch(function(){});}catch(e){}}
+beacon({path:location.pathname,ref:document.referrer,vid:v});
+document.addEventListener("click",function(e){var el=e.target.closest("a,button");if(!el)return;var label=(el.getAttribute("aria-label")||el.textContent||el.getAttribute("href")||"").trim().replace(/\s+/g," ").slice(0,80);if(!label)return;beacon({path:location.pathname,ref:document.referrer,vid:v,event:"click",label:label});},true);
+}catch(e){}})();
 </script>
 </body>
 </html>
