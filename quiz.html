@@ -293,5 +293,10 @@ function saveContact(){
   var a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="Alicia Johnson.vcf"; document.body.appendChild(a); a.click(); document.body.removeChild(a);
 }
 </script>
+<script>
+/* Alicia Hub visitor counter — logs an anonymous page view to the CRM */
+(function(){try{var K="ajv";var v=localStorage.getItem(K);if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem(K,v);}
+fetch("https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/site-visits",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({path:location.pathname,ref:document.referrer,vid:v}),keepalive:true}).catch(function(){});}catch(e){}})();
+</script>
 </body>
 </html>
