@@ -173,6 +173,20 @@
     border-radius:16px;padding:34px 34px 38px;box-shadow:0 18px 44px rgba(140,112,82,.10)}
   .tour-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   @media(max-width:600px){.tour-card{padding:26px 20px 30px}.tour-row{grid-template-columns:1fr;gap:0}}
+  .tcarousel{position:relative;max-width:760px;margin:0 auto;overflow:hidden}
+  .ttrack{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+  .tslide{min-width:100%;box-sizing:border-box;padding:6px 4px}
+  .tslide .review{height:100%;margin:0}
+  .tprev,.tnext{position:absolute;top:44%;transform:translateY(-50%);background:#fff;border:1px solid var(--line);color:var(--accent-dark);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:24px;line-height:40px;text-align:center;box-shadow:0 6px 18px rgba(140,112,82,.16);z-index:2;transition:background .2s,color .2s}
+  .tprev:hover,.tnext:hover{background:var(--accent);color:#fff}
+  .tprev{left:2px}.tnext{right:2px}
+  .tdots{display:flex;gap:9px;justify-content:center;margin-top:20px}
+  .tdot{width:9px;height:9px;border-radius:50%;background:var(--line);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
+  .tdot.active{background:var(--accent);transform:scale(1.25)}
+  .news-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+  .news-form input{flex:1;min-width:200px;max-width:270px;padding:13px 15px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:1rem;background:#fff;color:var(--text)}
+  .news-form .btn{white-space:nowrap}
+  @media(max-width:520px){.news-form input{max-width:100%}}
 
   /* FOOTER */
   footer{background:#0f1c2e;color:#9fb0c0;padding:44px 0;text-align:center;font-size:.9rem}
@@ -517,26 +531,37 @@
       <h2>What My Clients Say</h2>
       <p>Nothing means more to me than helping people find their place in the North Bay. Here's what a few of them had to share.</p>
     </div>
-    <div class="reviews reveal">
-      <div class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;Alicia made our first home purchase feel completely manageable. She answered every question, no matter how small, and negotiated a price we didn't think was possible. We couldn't have done it without her.&rdquo;</p>
-        <div class="who"><div class="avatar">MR</div><div><b>Maria &amp; Tom R.</b><small>Buyers in Santa Rosa</small></div></div>
+    <div class="tcarousel reveal">
+      <div class="ttrack" id="ttrack">
+        <div class="tslide">
+          <div class="review">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;Alicia made our first home purchase feel completely manageable. She answered every question, no matter how small, and negotiated a price we didn't think was possible. We couldn't have done it without her.&rdquo;</p>
+            <div class="who"><div class="avatar">MR</div><div><b>Maria &amp; Tom R.</b><small>Buyers in Santa Rosa</small></div></div>
+          </div>
+        </div>
+        <div class="tslide">
+          <div class="review">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;We sold our home for over asking in under two weeks. Alicia's marketing and staging advice were spot on, and she kept us informed through every single step. True professional.&rdquo;</p>
+            <div class="who"><div class="avatar">DK</div><div><b>David K.</b><small>Seller in Petaluma</small></div></div>
+          </div>
+        </div>
+        <div class="tslide">
+          <div class="review">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>&ldquo;Relocating from out of state was stressful, but Alicia knew the area inside and out. She found us the perfect neighborhood and felt more like a friend than an agent.&rdquo;</p>
+            <div class="who"><div class="avatar">JL</div><div><b>Jennifer L.</b><small>Buyer in Healdsburg</small></div></div>
+          </div>
+        </div>
       </div>
-      <div class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;We sold our home for over asking in under two weeks. Alicia's marketing and staging advice were spot on, and she kept us informed through every single step. True professional.&rdquo;</p>
-        <div class="who"><div class="avatar">DK</div><div><b>David K.</b><small>Seller in Petaluma</small></div></div>
-      </div>
-      <div class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;Relocating from out of state was stressful, but Alicia knew the area inside and out. She found us the perfect neighborhood and felt more like a friend than an agent.&rdquo;</p>
-        <div class="who"><div class="avatar">JL</div><div><b>Jennifer L.</b><small>Buyer in Healdsburg</small></div></div>
-      </div>
+      <button class="tprev" id="tprev" type="button" aria-label="Previous testimonial">&#8249;</button>
+      <button class="tnext" id="tnext" type="button" aria-label="Next testimonial">&#8250;</button>
+      <div class="tdots" id="tdots"></div>
     </div>
     <div style="text-align:center;margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a href="https://g.page/r/CRoW4gr5WMIDECE/review" class="btn" target="_blank" rel="noopener">&#9733; Leave a Review on Google</a>
-      <a href="https://www.zillow.com/reviews/write/?s=X1-ZU17vyb864i6osp_7vqv3" class="btn btn-outline" target="_blank" rel="noopener">&#9733; Leave a Review on Zillow</a>
+      <a href="https://www.zillow.com/reviews/write/?s=X1-ZU17vyb864i6osp_7vqv3" class="btn" target="_blank" rel="noopener">&#9733; Leave a Review on Zillow</a>
     </div>
     <div style="display:flex;gap:44px;justify-content:center;flex-wrap:wrap;margin-top:26px">
       <div style="text-align:center">
@@ -821,6 +846,21 @@
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section id="newsletter" class="section-soft">
+  <div class="wrap" style="max-width:720px;text-align:center;margin:0 auto">
+    <div class="eyebrow">Stay in the Know</div>
+    <h2>North Bay Market Updates</h2>
+    <p>Join my list for local market trends, new listings, and neighborhood insights &mdash; a quick, useful note now and then. Unsubscribe anytime.</p>
+    <form id="newsForm" class="news-form" onsubmit="return subscribeNews(event)">
+      <input id="newsName" type="text" placeholder="First name" aria-label="First name">
+      <input id="newsEmail" type="email" required placeholder="Your email" aria-label="Email address">
+      <button type="submit" class="btn" id="newsBtn">Subscribe</button>
+    </form>
+    <div id="newsMsg" style="margin-top:16px;font-size:.98rem;color:var(--accent-dark);min-height:1.2em"></div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
@@ -885,6 +925,70 @@ function beacon(b){try{fetch(U,{method:"POST",headers:{"content-type":"applicati
 beacon({path:location.pathname,ref:document.referrer,vid:v});
 document.addEventListener("click",function(e){var el=e.target.closest("a,button");if(!el)return;var label=(el.getAttribute("aria-label")||el.textContent||el.getAttribute("href")||"").trim().replace(/\s+/g," ").slice(0,80);if(!label)return;beacon({path:location.pathname,ref:document.referrer,vid:v,event:"click",label:label});},true);
 }catch(e){}})();
+
+/* Newsletter subscribe -> Brevo list (same backend the CRM uses) */
+function subscribeNews(e){
+  e.preventDefault();
+  var email=(document.getElementById('newsEmail').value||'').trim();
+  var name=(document.getElementById('newsName').value||'').trim();
+  var msg=document.getElementById('newsMsg'), btn=document.getElementById('newsBtn');
+  if(!email) return false;
+  var first=name, last='';
+  var sp=name.indexOf(' ');
+  if(sp>0){ first=name.slice(0,sp); last=name.slice(sp+1); }
+  btn.disabled=true; btn.textContent='Subscribing…'; msg.textContent='';
+  fetch('https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/brevo',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','apikey':'sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2','Authorization':'Bearer sb_publishable_eDBryBuAuIAR71DHilWmiA_h1CP1nx2'},
+    body:JSON.stringify({action:'sync',email:email,firstName:first,lastName:last})
+  }).then(function(r){return r.json();}).then(function(res){
+    if(res && res.ok){
+      document.getElementById('newsForm').style.display='none';
+      msg.style.color='var(--accent-dark)';
+      msg.innerHTML='&#10003; You’re on the list &mdash; thank you! Watch your inbox for North Bay updates.';
+    } else {
+      btn.disabled=false; btn.textContent='Subscribe';
+      msg.style.color='#b4522f';
+      msg.textContent='Sorry, that didn’t go through. Please try again, or email alicia@excelleraterealestate.com.';
+    }
+  }).catch(function(){
+    btn.disabled=false; btn.textContent='Subscribe';
+    msg.style.color='#b4522f';
+    msg.textContent='Sorry, that didn’t go through. Please try again.';
+  });
+  return false;
+}
+
+/* Testimonials carousel */
+(function(){
+  var track=document.getElementById('ttrack');
+  if(!track) return;
+  var n=track.children.length, i=0;
+  var dotsWrap=document.getElementById('tdots');
+  for(var d=0; d<n; d++){ (function(d){
+    var b=document.createElement('button');
+    b.className='tdot'+(d===0?' active':''); b.type='button';
+    b.setAttribute('aria-label','Go to testimonial '+(d+1));
+    b.onclick=function(){ go(d); reset(); };
+    dotsWrap.appendChild(b);
+  })(d); }
+  var dots=dotsWrap.children;
+  function render(){
+    track.style.transform='translateX(-'+(i*100)+'%)';
+    for(var k=0;k<n;k++){ dots[k].className='tdot'+(k===i?' active':''); }
+  }
+  function go(x){ i=((x%n)+n)%n; render(); }
+  var nx=document.getElementById('tnext'), pv=document.getElementById('tprev');
+  if(nx) nx.onclick=function(){ go(i+1); reset(); };
+  if(pv) pv.onclick=function(){ go(i-1); reset(); };
+  var timer=setInterval(function(){ go(i+1); },6000);
+  function reset(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); },6000); }
+  var wrap=document.querySelector('.tcarousel');
+  if(wrap){
+    wrap.addEventListener('mouseenter',function(){ clearInterval(timer); });
+    wrap.addEventListener('mouseleave',reset);
+  }
+})();
 </script>
 </body>
 </html>
