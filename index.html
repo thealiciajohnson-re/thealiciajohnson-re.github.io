@@ -590,6 +590,10 @@
           <input id="vname" name="name" type="text" required placeholder="Your name">
           <input id="vemail" name="email" type="email" required placeholder="Email">
           <input id="vphone" name="phone" type="tel" required placeholder="Phone number">
+          <label style="display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:#5a6b7c;text-align:left;margin:2px 0 6px;line-height:1.4">
+            <input id="vsms" type="checkbox" style="margin-top:3px;flex:0 0 auto">
+            <span>Text me too &mdash; I agree to receive occasional texts from Alicia Johnson about my home value &amp; the market. Msg &amp; data rates may apply; reply STOP to opt out.</span>
+          </label>
           <button type="submit" class="btn" id="hvBtn">Get My Instant Estimate</button>
         </form>
         <div id="hvResult" style="display:none;margin-top:16px"></div>
@@ -606,11 +610,12 @@
       var name=(document.getElementById('vname').value||'').trim();
       var email=(document.getElementById('vemail').value||'').trim();
       var phone=(document.getElementById('vphone').value||'').trim();
+      var smsConsent=!!(document.getElementById('vsms')&&document.getElementById('vsms').checked);
       var sp=name.split(/\s+/); var first=sp.shift()||''; var last=sp.join(' ');
       btn.disabled=true; btn.textContent='Calculating your estimate…';
       fetch('https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/home-value-lead',{
         method:'POST',headers:{'content-type':'application/json'},
-        body:JSON.stringify({street:addr,first:first,last:last,email:email,phone:phone})
+        body:JSON.stringify({street:addr,first:first,last:last,email:email,phone:phone,smsConsent:smsConsent})
       }).then(function(r){return r.json();}).then(function(d){
         var est=d&&d.estimate, html='';
         if(est&&est.value){
