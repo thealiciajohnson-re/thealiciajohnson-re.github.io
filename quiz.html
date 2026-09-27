@@ -230,7 +230,8 @@ function render(){
     h+='<label class="flabel">First name</label><input type="text" id="cFirst" value="'+(A.first||"")+'" oninput="A.first=this.value" placeholder="Jane">'+
        '<label class="flabel">Last name</label><input type="text" id="cLast" value="'+(A.last||"")+'" oninput="A.last=this.value" placeholder="Smith">'+
        '<label class="flabel">Mobile number (I\'ll text your results here)</label><input type="tel" id="cPhone" value="'+(A.phone||"")+'" oninput="A.phone=this.value" placeholder="707-555-0100">'+
-       '<label class="flabel">Email</label><input type="email" id="cEmail" value="'+(A.email||"")+'" oninput="A.email=this.value" placeholder="you@email.com">';
+       '<label class="flabel">Email</label><input type="email" id="cEmail" value="'+(A.email||"")+'" oninput="A.email=this.value" placeholder="you@email.com">'+
+       '<label class="flabel" style="display:flex;align-items:flex-start;gap:8px;font-weight:400;font-size:.85rem;margin-top:12px;cursor:pointer"><input type="checkbox" id="cSms" '+(A.smsConsent?"checked":"")+' onchange="A.smsConsent=this.checked" style="margin-top:3px;flex:0 0 auto"><span>Text me my results &amp; occasional market updates from Alicia. Msg &amp; data rates may apply; reply STOP to opt out.</span></label>';
   }
   $("qbody").innerHTML = h;
   window.scrollTo(0,0);
@@ -274,7 +275,8 @@ function submit(){
     first: A.first, last: A.last, phone: A.phone, email: A.email,
     reason: A.reason, property: A.property, area: A.area, timeline: A.timeline,
     priorities: fmtRank(A.priorities), gut: A.gut?money(A.gut):"",
-    worries: (A.worries||[]).join(", "), dream: A.dream, suggestedText: suggestedText()
+    worries: (A.worries||[]).join(", "), dream: A.dream, suggestedText: suggestedText(),
+    smsConsent: !!A.smsConsent
   };
   // Flow the lead straight into Alicia's CRM (not Follow Up Boss).
   fetch("https://mdlonovzxkpcahopwvac.supabase.co/functions/v1/quiz-lead", {
