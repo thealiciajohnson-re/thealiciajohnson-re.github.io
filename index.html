@@ -307,7 +307,8 @@
       <h1>North Bay local real estate, guided every step of the way.</h1>
       <p>Whether you're buying your first home or selling a property you've loved for decades, I'm here to make the process clear, calm, and successful.</p>
       <div class="hero-cta">
-        <a href="https://excelleraterealestate.com/properties/sale" class="btn" target="_blank" rel="noopener">Browse Homes for Sale</a>
+        <a href="/quiz" class="btn">What&rsquo;s My Home Worth?</a>
+        <a href="https://excelleraterealestate.com/properties/sale" class="btn btn-outline" target="_blank" rel="noopener">Browse Homes for Sale</a>
         <a href="#tour" class="btn btn-outline">Schedule a Tour</a>
       </div>
     </div>
@@ -582,7 +583,7 @@
     <div class="valuation reveal">
       <div>
         <h2>What's Your Home Worth?</h2>
-        <p>Get an <strong>instant estimate</strong> based on real nearby sales&mdash;delivered to your inbox in seconds. Want the precise number? I'll follow up with a free, no-obligation market analysis prepared personally by me.</p>
+        <p>Get an <strong>instant estimate</strong> based on real nearby sales&mdash;delivered to your inbox in seconds. Want the precise number? I'll follow up with a free market analysis prepared personally by me.</p>
       </div>
       <div class="vform">
         <form id="hvForm">
@@ -621,18 +622,18 @@
         if(est&&est.value){
           html='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center">'
             +'<div style="font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:#6b7280">Estimated value</div>'
-            +'<div style="font-size:2rem;font-weight:800;color:#1b4f3a;margin:6px 0">'+est.value+'</div>'
+            +'<div style="font-size:2rem;font-weight:800;color:#2a5a8c;margin:6px 0">'+est.value+'</div>'
             +(est.low&&est.high?'<div style="color:#444">Likely range '+est.low+' &ndash; '+est.high+'</div>':'')
             +'<div style="margin-top:12px;color:#374151">I just emailed this to you with next steps. For a precise, personalized valuation, I&rsquo;ll follow up shortly.</div></div>';
         } else {
           html='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center">'
-            +'<div style="font-size:1.1rem;font-weight:700;color:#1b4f3a">Thanks! Your request is in. 🏡</div>'
+            +'<div style="font-size:1.1rem;font-weight:700;color:#2a5a8c">Thanks! Your request is in. 🏡</div>'
             +'<div style="margin-top:8px;color:#374151">I&rsquo;m preparing your estimate and will email it to you shortly.</div></div>';
         }
         f.style.display='none'; out.innerHTML=html; out.style.display='block';
       }).catch(function(){
         f.style.display='none';
-        out.innerHTML='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center"><div style="font-weight:700;color:#1b4f3a">Thanks! Your request is in.</div><div style="margin-top:8px;color:#374151">I&rsquo;ll email your estimate shortly.</div></div>';
+        out.innerHTML='<div style="background:#f5f4f0;border-radius:12px;padding:22px;text-align:center"><div style="font-weight:700;color:#2a5a8c">Thanks! Your request is in.</div><div style="margin-top:8px;color:#374151">I&rsquo;ll email your estimate shortly.</div></div>';
         out.style.display='block';
       });
     });
