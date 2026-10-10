@@ -149,10 +149,29 @@
   .area .pin{color:var(--accent);font-size:1.6rem;margin-bottom:10px}
   @media(max-width:760px){.areas{grid-template-columns:1fr}}
 
-  /* LISTINGS CTA */
-  .listings{background:var(--navy);color:#fff;text-align:center}
+  /* LISTINGS */
+  .listings{background:var(--navy);color:#fff}
+  .listings .wrap{text-align:center}
   .listings h2{color:#fff}
-  .listings p{color:#cdd9e4;max-width:560px;margin:14px auto 30px}
+  .listings .sub{color:#e7dccb;max-width:660px;margin:14px auto 34px;font-size:1.02rem}
+  .listing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;text-align:left;margin-bottom:32px}
+  .listing-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+  .listing-card:hover{transform:translateY(-4px);box-shadow:0 16px 42px rgba(0,0,0,.26)}
+  .listing-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--bg-soft)}
+  .listing-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .listing-card:hover .listing-media img{transform:scale(1.05)}
+  .listing-status{position:absolute;top:12px;left:12px;font-family:'Jost',sans-serif;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent-dark);padding:5px 11px;border-radius:999px}
+  .listing-status.uc,.listing-status.pending{background:#6c6257}
+  .listing-body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .listing-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:600;color:var(--navy);line-height:1}
+  .listing-addr{margin-top:6px;font-weight:500;color:var(--text)}
+  .listing-city{color:var(--muted);font-size:.92rem}
+  .listing-specs{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--text);font-size:.88rem;letter-spacing:.01em}
+  .listing-link{margin-top:14px;align-self:flex-start;font-family:'Jost',sans-serif;font-weight:600;font-size:.9rem;color:var(--accent-dark);text-decoration:none}
+  .listing-link:hover{color:var(--navy)}
+  .listings .disclaimer{color:#c7bba7;font-size:.74rem;max-width:660px;margin:22px auto 0;line-height:1.6}
+  @media(max-width:900px){.listing-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.listing-grid{grid-template-columns:1fr}}
 
   /* CONTACT */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
@@ -285,11 +304,9 @@
       <div class="nav-links" id="navlinks">
         <a href="#about">About</a>
         <a href="#listings">Homes for Sale</a>
-        <a href="#justlisted">Just Listed</a>
         <a href="#buyers">Buyers</a>
         <a href="#buyers" id="nav-sellers">Sellers</a>
         <a href="#areas">Areas</a>
-        <a href="#sold">Sold</a>
         <a href="#guides">Guides</a>
         <a href="#tour">Book a Tour</a>
         <a href="#reviews">Reviews</a>
@@ -358,8 +375,96 @@
 <section id="listings" class="listings">
   <div class="wrap">
     <h2>Homes for Sale</h2>
-    <p>Looking for your next home across Sonoma, Napa, and Mendocino County? New properties hit the market daily. Tell me what you're after and I'll send you matching listings the moment they come available.</p>
-    <a href="#contact" class="btn">Contact Me for Listings &rarr;</a>
+    <p class="sub">Active listings from our Excellerate Real Estate team across the North Bay &amp; Bay Area. Tap any home for full details &amp; photos on the Excellerate site &mdash; and reach out anytime and I'll set up a private showing.</p>
+    <div class="listing-grid">
+<!-- LISTINGS:AUTO-START (managed daily by excellerate-listings-sync; edit via that task, not by hand) -->
+      <article class="listing-card">
+        <a class="listing-media" href="https://excelleraterealestate.com/properties/310-franz-valley-school-road-calistoga-ca-us-94515-326083158" target="_blank" rel="noopener">
+          <img src="images/listings/326083158.jpg" alt="310 Franz Valley School Road, Calistoga CA" loading="lazy">
+          <span class="listing-status">For Sale</span>
+        </a>
+        <div class="listing-body">
+          <div class="listing-price">$3,500,000</div>
+          <div class="listing-addr">310 Franz Valley School Road</div>
+          <div class="listing-city">Calistoga, CA</div>
+          <div class="listing-specs">3 bd &middot; 2 ba &middot; 1,488 sqft &middot; 6.54 acres</div>
+          <a class="listing-link" href="https://excelleraterealestate.com/properties/310-franz-valley-school-road-calistoga-ca-us-94515-326083158" target="_blank" rel="noopener">View on Excellerate &rarr;</a>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <a class="listing-media" href="https://excelleraterealestate.com/properties/9323-lakewood-dr-drive-windsor-ca-us-95492-326080742" target="_blank" rel="noopener">
+          <img src="images/listings/326080742.jpg" alt="9323 Lakewood Drive, Windsor CA" loading="lazy">
+          <span class="listing-status">For Sale</span>
+        </a>
+        <div class="listing-body">
+          <div class="listing-price">$1,199,000</div>
+          <div class="listing-addr">9323 Lakewood Drive</div>
+          <div class="listing-city">Windsor, CA</div>
+          <div class="listing-specs">3 bd &middot; 3 ba &middot; 2,804 sqft</div>
+          <a class="listing-link" href="https://excelleraterealestate.com/properties/9323-lakewood-dr-drive-windsor-ca-us-95492-326080742" target="_blank" rel="noopener">View on Excellerate &rarr;</a>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <a class="listing-media" href="https://excelleraterealestate.com/properties/3710-central-parkway-dublin-ca-us-94568-326073757" target="_blank" rel="noopener">
+          <img src="images/listings/326073757.jpg" alt="3710 Central Parkway, Dublin CA" loading="lazy">
+          <span class="listing-status">For Sale</span>
+        </a>
+        <div class="listing-body">
+          <div class="listing-price">$999,000</div>
+          <div class="listing-addr">3710 Central Parkway</div>
+          <div class="listing-city">Dublin, CA</div>
+          <div class="listing-specs">4 bd &middot; 4 ba &middot; 2,112 sqft</div>
+          <a class="listing-link" href="https://excelleraterealestate.com/properties/3710-central-parkway-dublin-ca-us-94568-326073757" target="_blank" rel="noopener">View on Excellerate &rarr;</a>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <a class="listing-media" href="https://excelleraterealestate.com/properties/1715-spur-ridge-lane-healdsburg-ca-us-95448-326055787" target="_blank" rel="noopener">
+          <img src="images/listings/326055787.jpg" alt="1715 Spur Ridge Lane, Healdsburg CA" loading="lazy">
+          <span class="listing-status uc">Under Contract</span>
+        </a>
+        <div class="listing-body">
+          <div class="listing-price">$899,000</div>
+          <div class="listing-addr">1715 Spur Ridge Lane</div>
+          <div class="listing-city">Healdsburg, CA</div>
+          <div class="listing-specs">4 bd &middot; 3 ba &middot; 1,926 sqft</div>
+          <a class="listing-link" href="https://excelleraterealestate.com/properties/1715-spur-ridge-lane-healdsburg-ca-us-95448-326055787" target="_blank" rel="noopener">View on Excellerate &rarr;</a>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <a class="listing-media" href="https://excelleraterealestate.com/properties/2140-alejandro-drive-santa-rosa-ca-us-95405-326079619" target="_blank" rel="noopener">
+          <img src="images/listings/326079619.jpg" alt="2140 Alejandro Drive, Santa Rosa CA" loading="lazy">
+          <span class="listing-status uc">Under Contract</span>
+        </a>
+        <div class="listing-body">
+          <div class="listing-price">$899,000</div>
+          <div class="listing-addr">2140 Alejandro Drive</div>
+          <div class="listing-city">Santa Rosa, CA</div>
+          <div class="listing-specs">4 bd &middot; 3 ba &middot; 2,159 sqft</div>
+          <a class="listing-link" href="https://excelleraterealestate.com/properties/2140-alejandro-drive-santa-rosa-ca-us-95405-326079619" target="_blank" rel="noopener">View on Excellerate &rarr;</a>
+        </div>
+      </article>
+
+      <article class="listing-card">
+        <a class="listing-media" href="https://excelleraterealestate.com/properties/916-saint-francis-drive-petaluma-ca-us-94954-326050091" target="_blank" rel="noopener">
+          <img src="images/listings/326050091.jpg" alt="916 Saint Francis Drive, Petaluma CA" loading="lazy">
+          <span class="listing-status pending">Pending</span>
+        </a>
+        <div class="listing-body">
+          <div class="listing-price">$799,000</div>
+          <div class="listing-addr">916 Saint Francis Drive</div>
+          <div class="listing-city">Petaluma, CA</div>
+          <div class="listing-specs">4 bd &middot; 3 ba &middot; 1,924 sqft</div>
+          <a class="listing-link" href="https://excelleraterealestate.com/properties/916-saint-francis-drive-petaluma-ca-us-94954-326050091" target="_blank" rel="noopener">View on Excellerate &rarr;</a>
+        </div>
+      </article>
+<!-- LISTINGS:AUTO-END -->
+    </div>
+    <a href="https://excelleraterealestate.com/properties/sale" target="_blank" rel="noopener" class="btn">See all Excellerate listings &rarr;</a>
+    <p class="disclaimer">Listings courtesy of the Excellerate Real Estate team (DRE #02014153), updated daily. Information deemed reliable but not guaranteed; prices &amp; availability subject to change. Alicia Johnson, DRE #02272644.</p>
   </div>
 </section>
 
@@ -476,34 +581,6 @@
 </section>
 
 <!-- RECENT SALES -->
-<section id="justlisted" class="section-soft">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">New to Market</div>
-      <h2>Just Listed</h2>
-      <p>My newest listings across Sonoma County. Homes here move fast — reach out for a private showing.</p>
-    </div>
-    <div class="reviews reveal">
-      <!-- ════════ TO ADD A LISTING: copy this whole block, fill in the details, and put the photo in images/ ════════
-      <div class="review">
-        <img src="images/FILENAME.jpg" alt="STREET ADDRESS — just listed" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:14px;display:block" />
-        <div class="eyebrow" style="margin-bottom:6px">Just Listed</div>
-        <h3 style="margin:0 0 2px;font-size:19px">STREET ADDRESS</h3>
-        <div style="opacity:.7">CITY, CA</div>
-        <div style="font-size:24px;font-weight:800;margin-top:12px">$PRICE</div>
-        <div style="margin-top:4px;opacity:.75">3 bd &middot; 2 ba &middot; 1,610 sqft</div>
-      </div>
-      ════════════════════════════════════════════════════════════════════════════════════════════════════════════ -->
-      <div class="review" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:170px">
-        <div class="eyebrow" style="margin-bottom:6px">New to Market</div>
-        <h3 style="margin:0 0 6px;font-size:19px">New listings coming soon</h3>
-        <p style="opacity:.75;margin:0 0 14px">Want first look at homes before they hit the market?</p>
-        <a href="#contact" class="btn">Contact Me</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="sold">
   <div class="wrap">
     <div class="section-head">
@@ -512,14 +589,15 @@
       <p>A few of the homes I've recently helped clients buy and sell across Sonoma County.</p>
     </div>
     <div class="reviews reveal">
-      <div class="review">
+      <a class="review" href="https://www.zillow.com/homedetails/7114-Belita-Ave-Rohnert-Park-CA-94928/15839406_zpid/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block">
         <img src="images/Belita.jpg" alt="7114 Belita Ave, Rohnert Park — sold" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:14px;display:block" />
         <div class="eyebrow" style="margin-bottom:6px">Just Sold</div>
         <h3 style="margin:0 0 2px;font-size:19px">7114 Belita Ave</h3>
         <div style="opacity:.7">Rohnert Park, CA</div>
         <div style="font-size:24px;font-weight:800;margin-top:12px">$675,000</div>
         <div style="margin-top:4px;opacity:.75">Represented the Buyer</div>
-      </div>
+        <div style="margin-top:12px;color:var(--accent-dark);font-weight:600;font-size:.9rem">View on Zillow &rarr;</div>
+      </a>
     </div>
   </div>
 </section>
