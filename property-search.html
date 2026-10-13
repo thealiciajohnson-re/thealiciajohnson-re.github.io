@@ -150,7 +150,7 @@
               <div><label for="gphone">Phone</label><input id="gphone" type="tel" autocomplete="tel"></div>
             </div>
             <div><label for="gemail">Email <span class="req">*</span> <span style="text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400">&mdash; where I'll send your results</span></label><input id="gemail" type="email" autocomplete="email" required></div>
-            <label class="consent"><input id="gsms" type="checkbox"> <span>Text me new listings too. Msg &amp; data rates may apply; reply STOP to opt out.</span></label>
+            <label class="consent"><input id="gsms" type="checkbox" checked> <span>Email me new listings as they hit the market.</span></label>
             <button class="submit" id="gateBtn" type="submit">See my matches →</button>
             <div class="err" id="gateErr" style="display:none"></div>
           </form>
@@ -229,7 +229,8 @@
       preApproved:document.getElementById("gpre").value,
       sellingHome:document.getElementById("gsell").value,
       timeline:"Actively searching (website)",
-      smsConsent:document.getElementById("gsms").checked
+      smsConsent:false,
+      emailAlerts:document.getElementById("gsms").checked
     };
     fetch(ENDPOINT,{method:"POST",headers:{"content-type":"application/json","apikey":KEY},body:JSON.stringify(payload)})
       .then(function(r){return r.json();})
