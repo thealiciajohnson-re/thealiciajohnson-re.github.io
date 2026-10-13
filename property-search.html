@@ -56,8 +56,7 @@
   .gate-card .lock{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 8px}
   .gate-card h3{font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;font-weight:600;margin:0 0 6px;line-height:1.1}
   .gate-card .sub{color:var(--muted);font-size:14.5px;margin:0 0 16px}
-  .skip{display:block;text-align:center;margin-top:13px;font-size:12.5px;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:none;width:100%;font-family:inherit}
-  .skip:hover{color:var(--ink)}
+  .fineprint{text-align:center;margin:13px 0 0;font-size:12px;color:var(--muted);line-height:1.4}
 
   form{display:flex;flex-direction:column;gap:12px}
   .row{display:flex;gap:12px}
@@ -139,7 +138,7 @@
             <button class="submit" id="gateBtn" type="submit">Show me the homes →</button>
             <div class="err" id="gateErr" style="display:none"></div>
           </form>
-          <button class="skip" id="skipGate" type="button">Just browsing for now →</button>
+          <p class="fineprint">Free, and your info is only used to help with your home search — never shared or sold.</p>
         </div>
       </div>
     </div>
@@ -224,17 +223,11 @@
         } else { throw new Error(d && d.error || "error"); }
       })
       .catch(function(){
-        // never trap an interested buyer behind a backend hiccup — let them in, still logged
         beacon("click","search-register-error");
-        if(note) note.textContent="Powered by BAREIS MLS · updated in real time";
-        unlock();
+        btn.disabled=false; btn.textContent="Show me the homes →";
+        err.textContent="Something went wrong — please try again, or call/text Alicia at 707-849-6775.";
+        err.style.display="block";
       });
-  });
-
-  // soft escape: let determined browsers through, but log that someone searched anonymously
-  document.getElementById("skipGate").addEventListener("click",function(){
-    beacon("click","search-browse-anon");
-    unlock();
   });
 })();
 </script>
