@@ -119,22 +119,40 @@
       <iframe id="idxIframe" title="Search every home for sale — BAREIS MLS" data-src="https://rebareis.rapmls.com/scripts/mgrqispi.dll?APPNAME=ReBareis&amp;PRGNAME=MLSLogin&amp;ARGUMENT=es5oYXrO0PEstCYvghlUj8I2zC20OmC84ZvsA5%2Ftw9g%3D&amp;KeyRid=1&amp;MLS_Origin=BARI" loading="lazy"></iframe>
       <div class="idx-gate" id="idxGate">
         <div class="gate-card">
-          <h3 class="serif">Where should I send your results?</h3>
-          <p class="sub">Tell me where, and I'll open up the full MLS search for you &mdash; plus email you new matches the moment they list, often before the big sites. Takes 20 seconds.</p>
+          <h3 class="serif">Find your next home</h3>
+          <p class="sub">Tell me what you're looking for and I'll pull your matches from the full MLS &mdash; then email you new listings the moment they hit the market, often before the big sites.</p>
           <form id="gateForm" novalidate>
+            <div><label for="garea">Where are you looking?</label><input id="garea" type="text" placeholder="e.g. Santa Rosa, Petaluma, Windsor…"></div>
+            <div><label for="gbudget">Price range</label>
+              <select id="gbudget">
+                <option value="">Any price</option>
+                <option>Under $500k</option><option>$500k – $700k</option><option>$700k – $900k</option>
+                <option>$900k – $1.2M</option><option>$1.2M – $1.5M</option><option>$1.5M+</option>
+              </select>
+            </div>
+            <div class="row">
+              <div><label for="gbeds">Beds</label>
+                <select id="gbeds"><option value="">Any</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option><option>5+</option></select>
+              </div>
+              <div><label for="gbaths">Baths</label>
+                <select id="gbaths"><option value="">Any</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select>
+              </div>
+            </div>
+            <div class="row">
+              <div><label for="gpre">Pre-approved?</label>
+                <select id="gpre"><option value="">Select…</option><option>Yes</option><option>No</option><option>Not yet</option></select>
+              </div>
+              <div><label for="gsell">Selling your current home?</label>
+                <select id="gsell"><option value="">Select…</option><option>Yes</option><option>No</option><option>Maybe</option></select>
+              </div>
+            </div>
             <div class="row">
               <div><label for="gname">Name <span class="req">*</span></label><input id="gname" type="text" autocomplete="name" required></div>
               <div><label for="gphone">Phone</label><input id="gphone" type="tel" autocomplete="tel"></div>
             </div>
-            <div><label for="gemail">Email <span class="req">*</span></label><input id="gemail" type="email" autocomplete="email" required></div>
-            <div class="row">
-              <div><label for="garea">Where are you looking?</label><input id="garea" type="text" placeholder="e.g. Santa Rosa, Petaluma"></div>
-              <div><label for="gbeds">Beds</label>
-                <select id="gbeds"><option value="">Any</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option><option>5+</option></select>
-              </div>
-            </div>
+            <div><label for="gemail">Email <span class="req">*</span> <span style="text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400">&mdash; where I'll send your results</span></label><input id="gemail" type="email" autocomplete="email" required></div>
             <label class="consent"><input id="gsms" type="checkbox"> <span>Text me new listings too. Msg &amp; data rates may apply; reply STOP to opt out.</span></label>
-            <button class="submit" id="gateBtn" type="submit">Show me the homes →</button>
+            <button class="submit" id="gateBtn" type="submit">See my matches →</button>
             <div class="err" id="gateErr" style="display:none"></div>
           </form>
           <p class="fineprint">Free, and your info is only used to help with your home search — never shared or sold.</p>
@@ -202,12 +220,16 @@
     var email=document.getElementById("gemail").value.trim();
     if(!name){ err.textContent="Please add your name."; err.style.display="block"; return; }
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent="Please enter a valid email."; err.style.display="block"; return; }
-    btn.disabled=true; btn.textContent="Opening your search…";
+    btn.disabled=true; btn.textContent="Finding your matches…";
     var payload={
       name:name, email:email,
       phone:document.getElementById("gphone").value.trim(),
       area:document.getElementById("garea").value.trim(),
+      budget:document.getElementById("gbudget").value,
       beds:document.getElementById("gbeds").value,
+      baths:document.getElementById("gbaths").value,
+      preApproved:document.getElementById("gpre").value,
+      sellingHome:document.getElementById("gsell").value,
       timeline:"Actively searching (website)",
       smsConsent:document.getElementById("gsms").checked
     };
@@ -223,7 +245,7 @@
       })
       .catch(function(){
         beacon("click","search-register-error");
-        btn.disabled=false; btn.textContent="Show me the homes →";
+        btn.disabled=false; btn.textContent="See my matches →";
         err.textContent="Something went wrong — please try again, or call/text Alicia at 707-849-6775.";
         err.style.display="block";
       });
